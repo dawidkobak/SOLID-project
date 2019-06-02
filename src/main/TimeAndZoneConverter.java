@@ -1,8 +1,8 @@
 package main;
 
 public class TimeAndZoneConverter {
-    TimeAndZoneKeeper timeAndZoneKeeper;
-    String zoneAfterConversion;
+    private TimeAndZoneKeeper timeAndZoneKeeper;
+    private String zoneAfterConversion;
 
     public TimeAndZoneConverter(TimeAndZoneKeeper timeAndZoneKeeper, String zoneAfterConversion) {
         validateTimeZone(zoneAfterConversion);
