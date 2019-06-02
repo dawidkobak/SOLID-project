@@ -10,13 +10,14 @@ public class TimeAndZoneConverter {
         this.zoneAfterConversion = zoneAfterConversion;
     }
 
-    public String convert() {
-        Integer offset = calculateOffset();
-        return createNewTimeWithAddedOffset(offset);
-    }
-
     private void validateTimeZone(String timeZone) {
         TimeZoneChooser.chceckIfSupported(timeZone);
+    }
+
+    public TimeAndZoneKeeper convert() {
+        Integer offset = calculateOffset();
+        String newTime = createNewTimeWithAddedOffset(offset);
+        return new TimeAndZoneKeeper(newTime, zoneAfterConversion);
     }
 
     private Integer calculateOffset() {

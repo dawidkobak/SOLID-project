@@ -19,11 +19,12 @@ public class TimeAndZoneConverterTest {
         TimeAndZoneConverter timeAndZoneConverter = new TimeAndZoneConverter(timeAndZoneKeeper, zoneAfterConversion);
 
         String expectedTime = "06:41:05";
-        Assert.assertEquals(expectedTime, timeAndZoneConverter.convert());
+        TimeAndZoneKeeper timeAfterConversion = timeAndZoneConverter.convert();
+        Assert.assertEquals(expectedTime, timeAfterConversion.getTime());
     }
 
     @Test
-    public void shouldConvertFromGmtToPdt() {
+    public void shouldConvertTimeFromGmtToPdt() {
         String time = "06:41:05";
         String zoneToBeConverted = "GMT";
         String zoneAfterConversion = "PDT";
@@ -32,7 +33,8 @@ public class TimeAndZoneConverterTest {
         TimeAndZoneConverter timeAndZoneConverter = new TimeAndZoneConverter(timeAndZoneKeeper, zoneAfterConversion);
 
         String expectedTime = "23:41:05";
-        Assert.assertEquals(expectedTime, timeAndZoneConverter.convert());
+        TimeAndZoneKeeper timeAfterConversion = timeAndZoneConverter.convert();
+        Assert.assertEquals(expectedTime, timeAfterConversion.getTime());
     }
 
     @Test(expected = IllegalArgumentException.class)
